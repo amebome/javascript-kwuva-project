@@ -92,7 +92,7 @@
 
 @media screen and (max-width: 600px) {
   .search-button {
-    height: 38px;
+    height: 40px !important;
   }
 }
 
