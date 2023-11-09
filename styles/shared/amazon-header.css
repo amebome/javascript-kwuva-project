@@ -90,6 +90,12 @@
   flex-shrink: 0;
 }
 
+@media screen and (max-width: 600px) {
+  .search-button {
+    height: 38px;
+  }
+}
+
 .search-icon {
   height: 22px;
   margin-left: 2px;
