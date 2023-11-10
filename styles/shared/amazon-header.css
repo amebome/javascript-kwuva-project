@@ -153,3 +153,8 @@
   width: 26px;
   text-align: center;
 }
+
+.loginpage {
+  color: white !important;
+  padding: 6px;
+}
