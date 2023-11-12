@@ -158,3 +158,20 @@
   color: white !important;
   padding: 6px;
 }
+
+.wallet {
+  background-color: rgb(254, 189, 105);
+  border: none;
+  border-radius: 50px;
+}
+
+.wallet:hover {
+  background-color: #fff;
+}
+.sign-btn {
+  color: black;
+  background-color: rgb(254, 189, 105);
+  border-radius: 50px;
+  text-decoration: none;
+  padding: 3px;
+}
