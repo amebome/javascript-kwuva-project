@@ -78,3 +78,69 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     updateCartQuantity();
   });
 });
+let walletAddress = "";
+
+const connectWallet = async () => {
+    if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
+        try {
+            const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+            setWalletAddress(accounts[0]);
+            console.log(accounts[0]);
+        } catch (err) {
+            console.error(err.message);
+        }
+    } else {
+        console.log("Please install MetaMask");
+    }
+};
+
+const getCurrentlyWalletConnect = async () => {
+    if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
+        try {
+            const accounts = await window.ethereum.request({ method: "eth_accounts" });
+
+            if (accounts.length > 0) {
+                setWalletAddress(accounts[0]);
+                console.log(accounts[0]);
+            } else {
+                console.log("Connect to MetaMask using Connect Wallet");
+            }
+        } catch (err) {
+            console.error(err.message);
+        }
+    } else {
+        console.log("Please install MetaMask");
+    }
+};
+
+const addWallet = async () => {
+    if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
+        window.ethereum.on("accountsChanged", (accounts) => {
+            setWalletAddress(accounts[0]);
+            console.log(accounts[0]);
+        });
+    } else {
+        setWalletAddress("");
+        console.log("Please install MetaMask");
+    }
+};
+
+const setWalletAddress = (address) => {
+    walletAddress = address;
+    updateWalletStatus();
+};
+
+const updateWalletStatus = () => {
+    const walletStatus = document.getElementById('walletStatus');
+    if (walletAddress && walletAddress.length > 0) {
+        walletStatus.textContent = `Connected: ${walletAddress.substring(0, 6)} ...${walletAddress.substring(38)}`;
+    } else {
+        walletStatus.textContent = 'Connect Wallet';
+    }
+};
+
+const connectWalletButton = document.getElementById('connectWalletButton');
+connectWalletButton.addEventListener('click', connectWallet);
+
+getCurrentlyWalletConnect();
+addWallet();
