@@ -50,7 +50,7 @@ cart.forEach((cartItem) => {
                   ${matchingProduct.name}
                 </div>
                 <div class="product-price">
-                 TLOS ${formatCurrency(matchingProduct.priceCents)}
+                 $TLOS ${formatCurrency(matchingProduct.priceCents)}
                 </div>
                 <div class="product-quantity">
                   <span> Quantity: <span class="quantity-label">
@@ -88,7 +88,7 @@ function deliveryOptionsHTML(matchingProduct, cartItem) {
     const priceString =
       deliveryOption.priceCents === 0
         ? "FREE"
-        : `TLOS ${formatCurrency(deliveryOption.priceCents)} -`;
+        : `$TLOS ${formatCurrency(deliveryOption.priceCents)} -`;
 
     const ischecked = deliveryOption.id === cartItem.deliveryOptionId;
 
